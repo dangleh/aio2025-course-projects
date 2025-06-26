@@ -1,6 +1,7 @@
 import streamlit as st
 from factorial import factorial
 import os
+from footer import show_footer
 
 def load_users():
     """read list of users from users.txt"""
@@ -37,6 +38,8 @@ def login_page():
                 st.rerun()
         else:
             st.warning("Please enter a username!")
+    
+    show_footer()
 
 def factorial_calculator():
     """Factorial calculator page"""
@@ -61,6 +64,8 @@ def factorial_calculator():
         result = factorial(number)
         st.write(f"The factorial of {number} is: {result}")
 
+    show_footer()
+
 def greeting_page():
     """Greeting page for new users"""
     st.title("Welcome!")
@@ -71,6 +76,8 @@ def greeting_page():
         st.session_state.show_greeting = False
         st.session_state.username = ""
         st.rerun()
+
+    show_footer()
 
 def main():
     # ARCHIVED 
@@ -96,6 +103,7 @@ def main():
         greeting_page()
     else:
         login_page()
+
 
 if __name__ == "__main__":
     main()

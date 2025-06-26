@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from PIL import Image
+from footer import show_footer
 
 # App title
 st.title("Score Analysis App")
@@ -63,6 +64,8 @@ def main():
             with col2:
                 st.image(img, width=300)  # Hiển thị biểu đồ ở cột giữa
                 st.markdown("Biểu đồ phân bố điểm số.")
+
+    show_footer()
 
 if __name__ == '__main__':
     main()
