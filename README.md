@@ -4,6 +4,8 @@
 1. Phân tích điểm số học sinh
 > streamlit run score-analysis-app.py.py
 
+Deployed: https://aio2025-p11.streamlit.app/ 
+
 2. Tính giai thừa
 > streamlit run factorial-calculation-app.py
 

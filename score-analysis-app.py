@@ -47,7 +47,7 @@ def main():
             ax.pie(
                 values, 
                 labels=labels, 
-                autopct='%1.1f%%', 
+                autopct='%1.1f%%', # automatic format percentage
                 textprops={'fontsize': 3.5}, 
             )
             ax.axis("equal")
