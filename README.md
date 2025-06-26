@@ -1,8 +1,13 @@
-# AIO-2025
-## Project 1.1: Streamlit Tutorial
-### Giới thiệu về Streamlit và xây dựng ứng dụng đơn giản:
-1. Phân tích điểm số học sinh
-streamlit run score_analysis_app.py
+Mã nguồn khoá học AIO-2025 của AI VIET NAM
+email: lehaidang2601@gmail.com
 
-2. Tính giai thừa
-streamlit run factorial_calculation_app.py
+Tổ chức theo các branchs:
+## 1. Module 1: Python
+
+## Project 1.1 - Streamlit Tutorial:
+Hướng dẫn cơ bản về Streamlit và triển khai ứng dụng tính giai thừa và phân tích điểm số
+Được lưu trữ tại branch: https://github.com/thainq107/aio-2025/tree/project-1.1-streamlit-tutorial
+
+## Project 1.2 - RAG Chatbot:
+Xây dựng RAG Chatbot từ file pdf với LangChain
+Được lưu trữ lại branch: https://github.com/thainq107/aio-2025/tree/project-1.2-rag-chatbot
