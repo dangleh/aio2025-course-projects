@@ -9,6 +9,7 @@ Deployed: https://aio2025-p11.streamlit.app/
 2. Tính giai thừa
 > streamlit run factorial-calculation-app.py
 
+Deployed: https://aio2025-p11-factorial-app.streamlit.app/
 ---
 
 > [!IMPORTANT] Install python environment\
