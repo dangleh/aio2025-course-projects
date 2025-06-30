@@ -3,7 +3,7 @@ bitsandbytes
 accelerate==1.7.0
 langchain==0.3.25
 langchainhub==0.1.21
-langchain-chroma==0.2.4
+langchain_chroma
 langchain_experimental==0.3.4
 langchain-community==0.3.24
 langchain_huggingface==0.2.0
