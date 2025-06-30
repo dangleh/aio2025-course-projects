@@ -3,16 +3,27 @@ import tempfile
 import os
 import torch
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_huggingface.embeddings import HuggingFaceEmbeddings
+# from langchain_huggingface.embeddings import HuggingFaceEmbeddings
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_chroma import Chroma
-from langchain_huggingface.llms import HuggingFacePipeline
+# from langchain_huggingface.llms import HuggingFacePipeline
 from langchain import hub
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
-from transformers import BitsAndBytesConfig
+# from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+# from transformers import BitsAndBytesConfig
 import time
+from langchain_google_genai import GoogleGenerativeAIEmbeddings, GoogleGenerativeAI
+from dotenv import load_dotenv
+
+
+import getpass
+import os
+
+load_dotenv()
+
+if not os.getenv("GOOGLE_API_KEY"):
+    os.environ["GOOGLE_API_KEY"] = getpass.getpass("Enter your Google API Key: ")
 
 # Session state initialization
 if 'rag_chain' not in st.session_state:
@@ -31,39 +42,50 @@ if 'pdf_name' not in st.session_state:
     st.session_state.pdf_name = ""
 
 # Functions
+# @st.cache_resource
+# def load_embeddings():
+#     return HuggingFaceEmbeddings(model_name="bkai-foundation-models/vietnamese-bi-encoder")
+
 @st.cache_resource
 def load_embeddings():
-    return HuggingFaceEmbeddings(model_name="bkai-foundation-models/vietnamese-bi-encoder")
+    return GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-exp-03-07")
+
+
+# @st.cache_resource  
+# def load_llm():
+#     MODEL_NAME = "lmsys/vicuna-7b-v1.5"
+
+#     bnb_config = BitsAndBytesConfig(
+#         load_in_4bit=True,
+#         bnb_4bit_use_double_quant=True,
+#         bnb_4bit_compute_dtype=torch.bfloat16,
+#         bnb_4bit_quant_type="nf4"
+#     )
+
+#     model = AutoModelForCausalLM.from_pretrained(
+#         MODEL_NAME,
+#         quantization_config=bnb_config,
+#         device_map="auto"
+#     )
+
+#     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+
+#     model_pipeline = pipeline(
+#         "text-generation",
+#         model=model,
+#         tokenizer=tokenizer,
+#         max_new_tokens=512,
+#         pad_token_id=tokenizer.eos_token_id,
+#         device_map="auto"
+#     )
+    
+#     return HuggingFacePipeline(pipeline=model_pipeline)
 
 @st.cache_resource  
 def load_llm():
-    MODEL_NAME = "lmsys/vicuna-7b-v1.5"
-
-    bnb_config = BitsAndBytesConfig(
-        load_in_4bit=True,
-        bnb_4bit_use_double_quant=True,
-        bnb_4bit_compute_dtype=torch.bfloat16,
-        bnb_4bit_quant_type="nf4"
-    )
-
-    model = AutoModelForCausalLM.from_pretrained(
-        MODEL_NAME,
-        quantization_config=bnb_config,
-        device_map="auto"
-    )
-
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-
-    model_pipeline = pipeline(
-        "text-generation",
-        model=model,
-        tokenizer=tokenizer,
-        max_new_tokens=512,
-        pad_token_id=tokenizer.eos_token_id,
-        device_map="auto"
-    )
+    MODEL_NAME = "gemini/gemini-2.0-flash"
     
-    return HuggingFacePipeline(pipeline=model_pipeline)
+    return GoogleGenerativeAI(model=MODEL_NAME)
 
 def process_pdf(uploaded_file):
     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
@@ -83,7 +105,7 @@ def process_pdf(uploaded_file):
     )
     
     docs = semantic_splitter.split_documents(documents)
-    vector_db = Chroma.from_documents(documents=docs, embedding=st.session_state.embeddings)
+    vector_db = Chroma.from_documents(documents=docs, embedding=st.session_state.embeddings, persist_directory="./chroma_db")
     retriever = vector_db.as_retriever()
     
     prompt = hub.pull("rlm/rag-prompt")
@@ -135,7 +157,7 @@ def main():
         initial_sidebar_state="expanded"
     )
     st.title("PDF RAG Assistant")
-    st.logo("./logo.png", size="large")
+    st.logo("./aibybit_logo.png", size="large")
     
     # Sidebar
     with st.sidebar:
