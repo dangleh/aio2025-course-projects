@@ -17,7 +17,7 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from langchain import hub
 
-
+# from langchain_community.llms import Ollama # local OLLAMA
 
 Loader = PyPDFLoader
 FILE_PATH = "./YOLOv10_Tutorials.pdf" # Replace with your PDF file path
@@ -60,6 +60,7 @@ nf4_config = BitsAndBytesConfig(
 )
 
 MODEL_NAME = "lmsys/vicuna-7b-v1.5"
+# MODEL_NAME = "meta-llama/Llama-3.2-1B" # local OLLAMA
 
 model = AutoModelForCausalLM.from_pretrained(
     MODEL_NAME,
@@ -74,12 +75,14 @@ model_pipeline = pipeline(
     tokenizer=tokenizer,
     max_new_tokens=512,
     pad_token_id=tokenizer.eos_token_id,
-    device_map="cpu"
+    device_map="cpu"  # Use "auto" for GPU or "cpu" for CPU
 )
 
 llm = HuggingFacePipeline(
     pipeline=model_pipeline,
 )
+
+# llm = Ollama(model="llama3.2") # local OLLAMA
 
 prompt = hub.pull("rlm/rag-prompt")
 
