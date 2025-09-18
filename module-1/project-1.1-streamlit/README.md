@@ -1,37 +1,51 @@
 # Project 1.1 - Streamlit Tutorial
 
-Hướng dẫn cơ bản về Streamlit và triển khai ứng dụng tính giai thừa và phân tích điểm số.
+Basic Streamlit tutorial with factorial calculator and grade analysis applications.
 
-## Mô tả
+## Description
+This project includes:
+- **Factorial Calculator App**: Login-based factorial calculator with user authentication
+- **Score Analysis App**: Excel file upload and grade distribution analysis with charts
+- **Basic Streamlit Components**: Demonstrates various Streamlit widgets and features
 
-Dự án này bao gồm:
+## Features
+- User authentication system
+- Factorial calculation with input validation
+- Excel file processing for grade analysis
+- Interactive charts and visualizations
+- Responsive UI with proper error handling
 
-- Ứng dụng tính giai thừa
-- Phân tích điểm số học sinh
-- Hướng dẫn cơ bản về Streamlit
-
-## Cài đặt
-
+## Installation
 ```bash
-# Sử dụng uv để cài đặt dependencies
+# Install dependencies using uv
 uv sync
 
-# Chạy ứng dụng
+# Run the main factorial calculator app
 uv run streamlit run app.py
+
+# Run the score analysis app
+uv run streamlit run score_analysis.py
 ```
 
-## Cấu trúc dự án
-
+## Project Structure
 ```
 project-1.1-streamlit/
-├── app.py              # Ứng dụng chính
-├── utils/              # Các hàm tiện ích
-├── data/               # Dữ liệu mẫu
+├── app.py              # Main factorial calculator app
+├── score_analysis.py   # Grade analysis application
+├── src/                # Source code modules
+│   ├── factorial.py    # Factorial calculation function
+│   └── footer.py       # Footer component
+├── data/               # Sample data
+│   ├── scores.xlsx     # Sample grade data
+│   └── users.txt       # User authentication data
 ├── tests/              # Unit tests
 └── README.md
 ```
 
-## Yêu cầu
-
+## Requirements
 - Python >= 3.8
 - Streamlit >= 1.28.0
+- Pandas >= 2.0.0
+- Matplotlib >= 3.7.0
+- Pillow >= 10.0.0
+- OpenPyXL >= 3.1.0
