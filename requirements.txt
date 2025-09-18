@@ -12,3 +12,5 @@ sentencepiece
 langchain-docling
 langchain-google-genai
 python-dotenv
+langchain-docling
+docling
