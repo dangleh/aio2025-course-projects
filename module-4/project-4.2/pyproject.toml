@@ -1,0 +1,21 @@
+[project]
+name = "project-4-2"
+version = "0.1.0"
+description = "Module 4 Project 2 - TBD"
+authors = [
+    {name = "Dang Le", email = "lehaidang2601@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+]
