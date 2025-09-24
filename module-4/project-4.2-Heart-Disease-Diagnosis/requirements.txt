@@ -7,10 +7,12 @@ seaborn>=0.11.0
 # Machine learning libraries
 scikit-learn>=1.0.0
 
+# Web application framework
+streamlit>=1.28.0
+
 # Jupyter notebook support
 jupyter>=1.0.0
 ipykernel>=6.0.0
 
 # Additional utilities
-pathlib2>=2.3.0; python_version < "3.4"
 gdown>=4.0.0
