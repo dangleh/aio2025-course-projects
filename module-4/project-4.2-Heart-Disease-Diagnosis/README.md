@@ -1,6 +1,6 @@
-# Project 4.2 - TBD
+# Project 3.2 - TBD
 
-Module 4 Project 2 - To be determined
+Module 3 Project 2 - To be determined
 
 ## Mô tả
 
@@ -19,7 +19,7 @@ uv run python main.py
 ## Cấu trúc dự án
 
 ```
-project-4.2/
+project-3.2/
 ├── main.py             # Ứng dụng chính
 ├── src/                # Source code
 ├── tests/              # Unit tests
