@@ -142,7 +142,6 @@ dmypy.json
 Thumbs.db
 
 # Project specific
-data/
 *.pdf
 vector_index/
 *.pkl
