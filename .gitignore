@@ -143,6 +143,7 @@ Thumbs.db
 
 # Project specific
 data/
+module-4/project-4.2-Retail-Forecasting/data/
 *.pdf
 vector_index/
 *.pkl
