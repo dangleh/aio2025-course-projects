@@ -7,11 +7,21 @@ plotly>=5.0.0
 
 # Machine learning libraries
 scikit-learn>=1.0.0
+jupyterlab>=4.4.6
+notebook>=7.4.6
+
+# Explainable AI
+shap>=0.43.0
 
 # Jupyter notebook support
 jupyter>=1.0.0
 ipykernel>=6.0.0
-notebook>=6.0.0
 
 # Additional utilities
 gdown>=4.0.0
+
+# Gradient boosting libraries
+lightgbm>=4.1.0
+xgboost>=2.0.0
+
+# (Removed Prophet; not used in current modeling)
